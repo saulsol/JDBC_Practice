@@ -21,11 +21,13 @@ public class BoardDaoImpl implements BoardDao {
 	public void registerArticle(BoardDto boardDto) {//
 		// TODO Auto-generated method stub
 		Connection con=null;
+		// 지역 변수로 준 이유는 커넥션 객체는 반납을 해야하는데
+		// 메소드가 끝나면 자동 반납하게
 		PreparedStatement pstmt=null;
 		try {
 			con=DBUtil.getInstance().getConnection();
 			StringBuilder sql=new StringBuilder("insert into board (subject,content,user_id) \n");
-			con.setAutoCommit(false);
+			con.setAutoCommit(false); // 트랜잭션 시작
 			sql.append("values (?,?,?)");
 			pstmt=con.prepareStatement(sql.toString());
 			pstmt.setString(1, boardDto.getSubject());

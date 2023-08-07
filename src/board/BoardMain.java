@@ -14,7 +14,7 @@ public class BoardMain {
 		in = new BufferedReader(new InputStreamReader(System.in));
 		menu();
 	}
-	private void searchListBySubject() throws Exception {// LIKE		
+	private void searchListBySubject() throws Exception {// LIKE
 	}
 	private void viewArticle() throws Exception {	
 		System.out.print("글번호 : ");
