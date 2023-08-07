@@ -6,7 +6,9 @@ import java.sql.SQLException;
 import java.util.List;
 
 import board.model.service.BoardServiceImpl;
+import board.model.service.UserServiceImpl;
 import model.bean.BoardDto;
+import model.bean.UserDto;
 import util.DBUtil;
 public class BoardMain {
 	BufferedReader in;
@@ -39,6 +41,24 @@ public class BoardMain {
 		BoardServiceImpl.getBoardService().deleteArticle(no);
 	}
 
+
+	private void resisterUser()throws Exception{
+		UserDto userDto = new UserDto();
+		System.out.print("등록하는 유저 ID : ");
+		userDto.setUserId(in.readLine());
+		System.out.print("등록하는 유저 PASSWORD : ");
+		userDto.setUserPassword(in.readLine());
+		System.out.print("등록하는 유저 NAME : ");
+		userDto.setUserName(in.readLine());
+		System.out.print("등록하는 유저 age : ");
+		userDto.setUserAge(Integer.parseInt(in.readLine()));
+		System.out.print("등록하는 유저 birthdate : ");
+		userDto.setBirthdate(in.readLine());
+
+		UserServiceImpl.getUserService().registerUser(userDto);
+
+	}
+
 	
 	private void menu() {
 		while (true) {
@@ -49,6 +69,7 @@ public class BoardMain {
 			System.out.println("4. 글보기");
 			System.out.println("5. 글수정");
 			System.out.println("6. 글삭제");
+			System.out.println("7. 유저 등록");
 			System.out.println("-------------------------------------");
 			System.out.println("0. 프로그램 종료");
 			System.out.println("-------------------------------------");
@@ -74,6 +95,11 @@ public class BoardMain {
 				case 6:
 					deleteArticle();
 					break;
+
+				case 7:
+					resisterUser();
+					break;
+
 				default:
 					System.exit(0);
 				}

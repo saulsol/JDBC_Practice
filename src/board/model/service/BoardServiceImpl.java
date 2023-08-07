@@ -6,7 +6,7 @@ import model.bean.BoardDto;
 import model.dao.BoardDaoImpl;
 
 public class BoardServiceImpl implements BoardService{
-	private static BoardService boardService=new BoardServiceImpl();	
+	private static BoardService boardService = new BoardServiceImpl();
 	
 	public static BoardService getBoardService() {
 		return boardService;
