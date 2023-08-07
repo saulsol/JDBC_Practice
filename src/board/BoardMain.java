@@ -52,7 +52,7 @@ public class BoardMain {
 		userDto.setUserName(in.readLine());
 		System.out.print("등록하는 유저 age : ");
 		userDto.setUserAge(Integer.parseInt(in.readLine()));
-		System.out.print("등록하는 유저 birthdate : ");
+		System.out.print("등록하는 유저 birthdate(형식 : 19991225) : ");
 		userDto.setBirthdate(in.readLine());
 
 		UserServiceImpl.getUserService().registerUser(userDto);
