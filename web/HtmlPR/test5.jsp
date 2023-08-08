@@ -1,4 +1,4 @@
-<%--
+<%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: PC
   Date: 2023-08-07
@@ -12,28 +12,27 @@
 </head>
 <body>
 
-<table border="1" cellpadding="100" >
-    <thead>
-    <tr>
-        <th></th>
-        <th></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    <tr>
-        <td></td>
-        <td></td>
-    </tr>
-    </tbody>
-</table>
+    <%
+        String data = request.getParameter("data");
+
+        System.out.println(data);
+
+        String state = request.getParameter("state");
+
+        System.out.println(state);
+
+        request.setAttribute("data", data);
+
+        if(state.equalsIgnoreCase("redirect")){
+            response.sendRedirect("redirect3.jsp");
+        }else{
+            RequestDispatcher rd = request.getRequestDispatcher("dispatcher.jsp");
+            rd.forward(request, response);
+        }
+        // 리다이렉트는 request안에 있는 값을 유지하지 못 한다.
+        // 하지만 포워딩은 값을 유지한다.
+    %>
+
 
 </body>
 </html>

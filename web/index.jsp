@@ -27,5 +27,12 @@
   %>
 
 
+  <%
+      String s = session.getId();
+      ServletContext servletContext = session.getServletContext();
+      System.out.println(s);
+  %>
+
+
   </body>
 </html>
