@@ -1,5 +1,6 @@
 package model.dao;
 
+import model.bean.BoardDto;
 import model.bean.LoginDto;
 import model.bean.UserDto;
 
@@ -8,13 +9,14 @@ import java.util.List;
 public interface UserDao {
 
 	String userLogin(LoginDto loginDto);
-	String findByUserId();
+
+	String logout(String user_id);
+
+	List<BoardDto> findBoardByUserId(String userId);
 	void registerUser(UserDto userDto);
-	List<UserDto> searchListAll();
-	String searchByUserName(String subject);
-	UserDto viewUserInfo(int userNum);
-	void modifyUserInfo(UserDto userDto);
-	void deleteUserInfo(int no);
+	List<String> searchListAll();
+	String searchByUserId(String subject);
+
 	
 
 }

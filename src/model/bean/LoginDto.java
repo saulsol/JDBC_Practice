@@ -10,6 +10,9 @@ public class LoginDto {
         this.password = password;
     }
 
+    public LoginDto() {
+    }
+
     public String getId() {
         return id;
     }

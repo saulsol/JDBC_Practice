@@ -8,6 +8,7 @@ import java.util.List;
 import board.model.service.BoardServiceImpl;
 import board.model.service.UserServiceImpl;
 import model.bean.BoardDto;
+import model.bean.LoginDto;
 import model.bean.UserDto;
 import util.DBUtil;
 public class BoardMain {
@@ -59,6 +60,34 @@ public class BoardMain {
 
 	}
 
+	private void login() throws Exception{
+		LoginDto loginDto = new LoginDto();
+		System.out.print("ID : ");
+		loginDto.setId(in.readLine());
+
+		System.out.print("PassWord : ");
+		loginDto.setPassword(in.readLine());
+
+		System.out.println(UserServiceImpl.getUserService().userLogin(loginDto));
+	}
+
+
+	private void boardListByUser() throws Exception{
+		System.out.print("ID : ");
+		List<BoardDto> list = UserServiceImpl.getUserService().findBoardByUserId(in.readLine());
+
+		for (BoardDto boardDto : list) {
+			System.out.println(boardDto);
+		}
+	}
+
+	private void logout() throws Exception{
+		System.out.print("ID : ");
+		System.out.println(UserServiceImpl.getUserService().userLogout(in.readLine()));
+	}
+
+
+
 	
 	private void menu() {
 		while (true) {
@@ -70,6 +99,9 @@ public class BoardMain {
 			System.out.println("5. 글수정");
 			System.out.println("6. 글삭제");
 			System.out.println("7. 유저 등록");
+			System.out.println("8. 유저 로그인");
+			System.out.println("9. 유저가 쓴 글 목록");
+			System.out.println("10. 유저 로그아웃");
 			System.out.println("-------------------------------------");
 			System.out.println("0. 프로그램 종료");
 			System.out.println("-------------------------------------");
@@ -95,11 +127,18 @@ public class BoardMain {
 				case 6:
 					deleteArticle();
 					break;
-
 				case 7:
 					resisterUser();
 					break;
-
+				case 8:
+					login();
+					break;
+				case 9:
+					boardListByUser();
+					break;
+				case 10:
+					logout();
+					break;
 				default:
 					System.exit(0);
 				}
@@ -108,11 +147,6 @@ public class BoardMain {
 			}
 		}
 	}
-//	private int articleNo;
-//	private String subject;
-//	private String content;
-//	private String userId;
-//	private String registerTime;
 	private void registerArticle() throws Exception {
 		BoardDto boardDto = new BoardDto();
 		System.out.println("=========글등록==========");
@@ -122,9 +156,7 @@ public class BoardMain {
 		boardDto.setContent(in.readLine());		
 		System.out.print("아이디");
 		boardDto.setUserId(in.readLine());
-		BoardServiceImpl.getBoardService
-		
-		().registerArticle(boardDto);
+		BoardServiceImpl.getBoardService().registerArticle(boardDto);
 		
 	}
 	private void searchListAll() {

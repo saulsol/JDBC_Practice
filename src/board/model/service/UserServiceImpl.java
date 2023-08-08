@@ -1,5 +1,6 @@
 package board.model.service;
 
+import model.bean.BoardDto;
 import model.bean.LoginDto;
 import model.bean.UserDto;
 import model.dao.UserDao;
@@ -21,9 +22,13 @@ public class UserServiceImpl implements UserService {
         return UserDaoImpl.getUserDao().userLogin(loginDto);
     }
 
+    public String userLogout(String userId){
+        return UserDaoImpl.getUserDao().logout(userId);
+    }
+
     @Override
-    public String findByUserId() {
-        return UserDaoImpl.getUserDao().findByUserId();
+    public List<BoardDto> findBoardByUserId(String userId) {
+        return UserDaoImpl.getUserDao().findBoardByUserId(userId);
     }
 
     @Override
@@ -32,27 +37,9 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> searchListAll() {
+    public List<String> searchListAll() {
         return UserDaoImpl.getUserDao().searchListAll();
     }
 
-    @Override
-    public String searchByUserName(String subject) {
-        return UserDaoImpl.getUserDao().searchByUserName(subject);
-    }
 
-    @Override
-    public UserDto viewUserInfo(int userNum) {
-        return UserDaoImpl.getUserDao().viewUserInfo(userNum);
-    }
-
-    @Override
-    public void modifyUserInfo(UserDto userDto) {
-        UserDaoImpl.getUserDao().modifyUserInfo(userDto);
-    }
-
-    @Override
-    public void deleteUserInfo(int no) {
-        UserDaoImpl.getUserDao().deleteUserInfo(no);
-    }
 }
