@@ -29,8 +29,9 @@
             RequestDispatcher rd = request.getRequestDispatcher("dispatcher.jsp");
             rd.forward(request, response);
         }
+        // 리다이렉트는 request안에 있는 값을 유지하지 못 한다.
+        // 하지만 포워딩은 값을 유지한다.
     %>
-
 
 </body>
 </html>
