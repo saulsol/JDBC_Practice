@@ -14,24 +14,7 @@
   </head>
   <body>
 
-  <%
-    for(int i=0; i<10; i++) { %>
-           <h<%=i%>>Elvis Presley</h<%=i%>>
-           <hr size=<%=10*i%> color="pink">
-          <%
-              if (i % 2 ==0){ %>
-                <hr size=<%=10*i%> color="green">
-              <% }
-          %>
-    <% }
-  %>
 
-
-  <%
-      String s = session.getId();
-      ServletContext servletContext = session.getServletContext();
-      System.out.println(s);
-  %>
 
 
   </body>

@@ -10,22 +10,40 @@
 <meta name="copyright" content="Copyright 2009 @ high1 all rights reserved" />
 <link href="../css/contents.css" rel="stylesheet" type="text/css" />
 
+ <script >
+     let loginCheck = function (){ // 익명적 함수 선언
+       if(!document.login.id.value || !document.login.pass.value){
+         alert('id or pass check')
+         document.login.id.value = ''
+         document.login.pass.value = ''
+         document.login.id.focus()
+
+       }
+       document.login.submit()
+
+     }
+
+
+ </script>
+
+
+
 </head>
 <body>
-<form name="login" method="post" action="../cartStruts/adminCheckLogin.action">
+<form name="login" method="post" action="LoginProcess.jsp">
  <div id="loginWrapper">
   <div class="loginForm">
    <fieldset>
     <legend>관리자 시스템 로그인</legend>
     <dl>
      <dt><img src="../img/common/th_id.gif" alt="아이디" /></dt>
-     <dd><input type="text" name="user_id" class="text" id="user_id" /></dd>
+     <dd><input type="text" name="id" class="text" id="user_id" /></dd>
 
      <dt><img src="../img/common/th_pw.gif" alt="비밀번호" /></dt>
-     <dd><input type="password" name="user_passwd" class="text" id="user_passwd" /></dd>
+     <dd><input type="password" name="pass" class="text" id="user_passwd" /></dd>
     </dl>
     <div class="btn">
-     <img id="btnSubmit" src="../img/button/btn_login.gif" alt="LOGIN" title="LOGIN"  />
+     <img onclick="loginCheck()" id="btnSubmit" src="../img/button/btn_login.gif" alt="LOGIN" title="LOGIN"  />
     </div>
     
     <div class="saveId"><input type="checkbox" id="checker" name="checker" /> 

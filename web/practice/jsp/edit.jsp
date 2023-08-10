@@ -10,17 +10,42 @@
 <link href="../css/contents.css" rel="stylesheet" type="text/css" />
 
 	<script>
-
+		let obj = document.frm;
 		function sendData() {
-			var obj = document.frm;
-			if (obj.title.value) {
-				alert('true')
-			} else {
-				alert('false')
+			obj = document.frm;
+			if (!obj.title.value||!obj.writer.value) {
+				clearValue()
 			}
+			obj.submit();
 
 		}
+
+		function clearValue(){
+			alert('title writer pass Check')
+			obj.title.value = '';
+			obj.writer.value = '';
+			obj.writer.focus();
+		}
+
+
+
+
+
+
 	</script>
+
+
+	<%
+		String id = (String) session.getAttribute("id");
+		if(id == null || id.equals("")) response.sendRedirect("adminLogin.jsp");
+
+	%>
+
+	<script>
+		document.location.href = 'logoutAction.jsp';
+
+	</script>
+
 
 
 </head>
@@ -32,7 +57,7 @@
 					<div class="loginWrap">
 						<span class="fir">2022.05.17</span>
 						<span>13:30:22</span>
-						<span><em>OOO님</em> 좋은 하루 되세요</span>
+						<span><em><%= session.getAttribute("id")%></em>님 좋은 하루 되세요</span>
 						<a href="" class="btnLogout"><img src="../img/common/btn_logout.gif" alt="로그아웃" /></a>
 					</div>
 				</div>
@@ -55,9 +80,7 @@
 					</div>
 
 
-					<form action="" name = "frm">
-
-
+					<form action="editPost.jsp" method="post" name = "frm">
 
 
 					
