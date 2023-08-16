@@ -1,53 +1,47 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<title>°ü¸®ÀÚ</title>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta http-equiv="X-UA-Compatible" content="IE=10" />
-<meta http-equiv="imagetoolbar" content="no" />
-<meta name="copyright" content="Copyright 2009 @ high1 all rights reserved" />
-<link href="../css/contents.css" rel="stylesheet" type="text/css" />
-
- <script >
-     let loginCheck = function (){ // ÀÍ¸íÀû ÇÔ¼ö ¼±¾ğ
-       if(!document.login.id.value || !document.login.pass.value){
-         alert('id or pass check')
-         document.login.id.value = ''
-         document.login.pass.value = ''
-         document.login.id.focus()
-
-       }
-       document.login.submit()
-
-     }
-
-
+ <title>ê´€ë¦¬ì</title>
+ <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <meta http-equiv="X-UA-Compatible" content="IE=10" />
+ <meta http-equiv="imagetoolbar" content="no" />
+ <meta name="copyright" content="Copyright 2009 @ high1 all rights reserved" />
+ <link href="../css/contents.css" rel="stylesheet" type="text/css" />
+ <script>
+  var loginCheck=function(){
+   if(!document.login.id.value||!document.login.pass.value){
+    alert('id or pass Check!');
+    document.login.id.value='';
+    document.login.pass.value='';
+    document.login.id.focus();
+    return false;
+   }
+   document.login.submit();
+  }
  </script>
-
-
-
 </head>
 <body>
-<form name="login" method="post" action="LoginProcess.jsp">
+<form name="login" method="post" action="/ServletLogPractice">
  <div id="loginWrapper">
   <div class="loginForm">
    <fieldset>
-    <legend>°ü¸®ÀÚ ½Ã½ºÅÛ ·Î±×ÀÎ</legend>
+    <legend>ê´€ë¦¬ì ì‹œìŠ¤í…œ ë¡œê·¸ì¸</legend>
     <dl>
-     <dt><img src="../img/common/th_id.gif" alt="¾ÆÀÌµğ" /></dt>
+
+     <dt><img src="../img/common/th_id.gif" alt="ì•„ì´ë””" /></dt>
      <dd><input type="text" name="id" class="text" id="user_id" /></dd>
 
-     <dt><img src="../img/common/th_pw.gif" alt="ºñ¹Ğ¹øÈ£" /></dt>
+     <dt><img src="../img/common/th_pw.gif" alt="ë¹„ë°€ë²ˆí˜¸" /></dt>
      <dd><input type="password" name="pass" class="text" id="user_passwd" /></dd>
     </dl>
     <div class="btn">
      <img onclick="loginCheck()" id="btnSubmit" src="../img/button/btn_login.gif" alt="LOGIN" title="LOGIN"  />
     </div>
-    
-    <div class="saveId"><input type="checkbox" id="checker" name="checker" /> 
-     <img src="../img/common/save_id.gif" alt="¾ÆÀÌµğ ÀúÀå" />
+
+    <div class="saveId"><input type="checkbox" id="checker" name="checker" />
+     <img src="../img/common/save_id.gif" alt="ì•„ì´ë”” ì €ì¥" />
     </div>
    </fieldset>
   </div>

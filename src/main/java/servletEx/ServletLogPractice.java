@@ -34,7 +34,7 @@ public class ServletLogPractice extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         PrintWriter out = response.getWriter();
         String id = request.getParameter("id");
-        String pwd = request.getParameter("pwd");
+        String pwd = request.getParameter("pass");
 
         if(id.isEmpty() || pwd.isEmpty()){
             out.print("ID 또는 비밀번호를 입력해주세요");
@@ -44,7 +44,11 @@ public class ServletLogPractice extends HttpServlet {
         HttpSession session = request.getSession();
         if(session.isNew() || session.getAttribute("id") == null){
             session.setAttribute("id", id);
-            out.print("로그인을 완료하였습니다.");
+            out.print("로그인을 완료했습니다.");
+
+            RequestDispatcher requestDispatcher = request.getRequestDispatcher("/practice/jsp/list.jsp");
+            requestDispatcher.forward(request, response);
+
         }else{
             out.print("현재 로그인 상태입니다.");
         }
