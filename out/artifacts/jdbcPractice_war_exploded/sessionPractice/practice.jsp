@@ -19,11 +19,12 @@
 
         session.setAttribute("MyNum", 12345);
         session.setMaxInactiveInterval(120);
+        //
+
 
     %>
 
     <a href="sessionGet.jsp"> go </a>
-
 
 
 </body>
